@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_AnimeList">AnimeList</string>
+    <string name="title_Episode">Episode</string>
+    <string name="title_Search">Search</string>
+
+    <!--App Message-->
+    <string name="some_error">Some Error Occurred!</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
