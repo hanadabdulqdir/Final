@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import anime.hanad.com.anime.MainActivity;
 import anime.hanad.com.anime.R;
 import anime.hanad.com.anime.network.model.Result;
 import io.realm.Realm;
@@ -60,8 +61,6 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.MyViewHolder
                 .into(holder.mArtwork);
     }
 
-
-
     @Override
     public int getItemCount() {
         return results.size();
@@ -85,6 +84,7 @@ public class AnimeAdapter extends RecyclerView.Adapter<AnimeAdapter.MyViewHolder
 
                     Toast.makeText(applicationContext, "music click", Toast.LENGTH_SHORT).show();
                     //Toast.makeText(applicationContext, results.get(getPosition()).getPreviewUrl(), Toast.LENGTH_SHORT).show();
+
                 }
             });
         }

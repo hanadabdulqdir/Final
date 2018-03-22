@@ -95,7 +95,7 @@ public class Tab1 extends BaseFragment implements IAnimeMvpView {
                         {
                             AlertNetwork();
 
-                            recyclerView.setAdapter(new AnimeRealmAdapter(getActivity(), MainActivity.getRealmDatabase(), R.layout.row_episode));
+                            recyclerView.setAdapter(new AnimeRealmAdapter(getActivity(), MainActivity.getRealmDatabase(), R.layout.row));
 
                             //if there is no internet connection then it will get from the realm backup
                             //get data from realm backup

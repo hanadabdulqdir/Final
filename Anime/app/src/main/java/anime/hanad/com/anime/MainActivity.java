@@ -1,5 +1,9 @@
 package anime.hanad.com.anime;
 
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,7 +15,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import anime.hanad.com.anime.AnimeList.fragment.AnimeFragment;
 import anime.hanad.com.anime.AnimeList.fragment.tabFragments.dataFragment;
@@ -47,7 +54,12 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LoadLocate();
         setContentView(R.layout.activity_main);
+
+        //ActionBar actionBar = getSupportActionBar();
+       // actionBar.setTitle(getResources().getString(R.string.app_name));
+
         tabView();
         //--
         fragmentManager = getSupportFragmentManager();
@@ -158,6 +170,7 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            ChangeLanguage();
             return true;
         }
 
@@ -218,6 +231,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ChangeLanguage();
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
@@ -234,4 +248,46 @@ public class MainActivity extends AppCompatActivity
         setFragment(new dataFragment());//init
     }
 
+    public void ChangeLanguage(){
+        final String [] ListItems = {"Spanish","English"};
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+        mBuilder.setTitle("Choose Language");
+        mBuilder.setSingleChoiceItems(ListItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                if(i==0){
+                    //Spanish
+                    setLocale("es");
+                    recreate();
+                }else if(i==1){
+                    //Spanish
+                    setLocale("");
+                    recreate();
+                }
+
+                dialog.dismiss();
+
+            }
+        });
+
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
+    }
+    private void setLocale(String lang){
+        Locale locale=new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+
+        SharedPreferences.Editor editor = getSharedPreferences("settings",MODE_PRIVATE).edit();
+        editor.putString("My_Lang",lang);
+        editor.apply();
+    }
+
+    public void LoadLocate(){
+        SharedPreferences pref = getSharedPreferences("settings", Activity.MODE_PRIVATE);
+        String language = pref.getString("My_Lang","");
+        setLocale(language);
+    }
 }

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "301705817983",
+    "firebase_url": "https://anime-198cb.firebaseio.com",
+    "project_id": "anime-198cb",
+    "storage_bucket": "anime-198cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301705817983:android:4b15f8765b8114a0",
+        "android_client_info": {
+          "package_name": "anime.hanad.com.anime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301705817983-gtb2ubgfa6hsn1i42b4d9q8b14375pcp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD3zxQiHmcea5tYKWwgKQ7TRmGguTNDgz0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+        
+    <string name="app_name"> Anime </string>
+
+    <string name="title_AnimeList"> AnimeList </string>
+        
+    <string name="title_Episode"> Episodio </string>
+        
+    <string name="title_Search"> Buscar </string>
+
+       <!-- Mensaje de la aplicación -->
+
+        
+    <string name="some_error"> ¡Ocurrió algún error! </string>
+        
+    <string name="navigation_drawer_open"> Abrir el cajón de navegación </string>
+        
+    <string name="navigation_drawer_close"> Cerrar el cajón de navegación </string>
+
+        
+    <string name="action_settings"> Configuración </string>
+        
+    <string name="animelist"> AnimeList </string>
+        
+    <string name="episodes"> Episodios </string>
+        
+    <string name="search"> Buscar </string>
+        
+    <string name="tools"> Herramientas </string>
+        
+    <string name="communicate"> Comunicarse </string>
+        
+    <string name="share"> Compartir </string>
+        
+    <string name="settings"> Configuración </string>
+        
+    <string name="release_date"> Fecha de lanzamiento </string>
+        
+    <string name="overview"> OverView </string>
+        
+    <string name="run_time"> Run Time </string>
+        
+    <string name="title"> Título </string>
+        
+    <string name="vote_count"> Conteo de votos </string>
+        
+    <string name="over_view"> Más de Vista </string>
+        
+    <string name="movie_id"> Movie ID </string>
+        
+    <string name="name"> Nombre </string>
+        
+    <string name="original_language"> Idioma original </string>
+        
+    <string name="android_studio"> Android Studio </string>
+        
+    <string name="android_studio_android_com"> android.studio@android.com </string>
+        
+    <string name="animename"> AnimeName </string>
+</resources>
