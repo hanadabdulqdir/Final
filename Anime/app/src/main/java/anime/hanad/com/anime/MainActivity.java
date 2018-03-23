@@ -15,7 +15,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +31,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Locale;
 
+import anime.hanad.com.anime.AnimeDetail.fragment.AnimeDetailFragment;
+
 import anime.hanad.com.anime.AnimeList.fragment.AnimeFragment;
+import anime.hanad.com.anime.AnimeList.fragment.tabFragments.Tab2;
 import anime.hanad.com.anime.AnimeList.fragment.tabFragments.dataFragment;
 import anime.hanad.com.anime.network.service.IRequestInterface;
 import anime.hanad.com.anime.realm_database.controller.RealmHelper;
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         //ActionBar actionBar = getSupportActionBar();
-       // actionBar.setTitle(getResources().getString(R.string.app_name));
+        // actionBar.setTitle(getResources().getString(R.string.app_name));
 
         tabView();
         //--
@@ -248,18 +250,18 @@ public class MainActivity extends AppCompatActivity
         setFragment(new dataFragment());//init
     }
 
-    public void ChangeLanguage(){
-        final String [] ListItems = {"Spanish","English"};
+    public void ChangeLanguage() {
+        final String[] ListItems = {"Spanish", "English"};
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
         mBuilder.setTitle("Choose Language");
         mBuilder.setSingleChoiceItems(ListItems, -1, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
-                if(i==0){
+                if (i == 0) {
                     //Spanish
                     setLocale("es");
                     recreate();
-                }else if(i==1){
+                } else if (i == 1) {
                     //Spanish
                     setLocale("");
                     recreate();
@@ -273,21 +275,34 @@ public class MainActivity extends AppCompatActivity
         AlertDialog mDialog = mBuilder.create();
         mDialog.show();
     }
-    private void setLocale(String lang){
-        Locale locale=new Locale(lang);
+
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
         config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,getBaseContext().getResources().getDisplayMetrics());
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
 
-        SharedPreferences.Editor editor = getSharedPreferences("settings",MODE_PRIVATE).edit();
-        editor.putString("My_Lang",lang);
+        SharedPreferences.Editor editor = getSharedPreferences("settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
         editor.apply();
     }
 
-    public void LoadLocate(){
+    public void LoadLocate() {
         SharedPreferences pref = getSharedPreferences("settings", Activity.MODE_PRIVATE);
-        String language = pref.getString("My_Lang","");
+        String language = pref.getString("My_Lang", "");
         setLocale(language);
+    }
+
+
+    public static void diplayEpisode(String id) {
+        Tab2 tab2 = new Tab2();
+        Bundle bundle = new Bundle();
+        bundle.putString("id", id);
+        tab2.setArguments(bundle);
+        fragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, tab2)
+                .addToBackStack(null)
+                .commit();
     }
 }

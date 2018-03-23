@@ -15,21 +15,26 @@ import java.util.List;
 
 import anime.hanad.com.anime.R;
 import anime.hanad.com.anime.network.model.Result;
+import anime.hanad.com.anime.network.modelDetail.Data;
+import anime.hanad.com.anime.network.modelDetail.Video;
 import io.realm.Realm;
 
 public class AnimeEpisodeAdapter extends RecyclerView.Adapter<AnimeEpisodeAdapter.MyViewHolder> {
 
     private Context applicationContext;
     private int row;
-    private List<Result> results;
+    private List<Video> results;
+    private Data data;
+
    // private Consumer<ClassicMusic> consumer;
     Realm realm;
 
 
-    public AnimeEpisodeAdapter(Context applicationContext, List<Result> results, int row) {
+    public AnimeEpisodeAdapter(Context applicationContext, List<Video> results,Data data, int row) {
         this.applicationContext = applicationContext;
         this.row = row;
         this.results = results;
+        this.data = data;
         //this.consumer = consumer;
     }
 
@@ -51,13 +56,14 @@ public class AnimeEpisodeAdapter extends RecyclerView.Adapter<AnimeEpisodeAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        holder.mArtistName.setText(results.get(position).getTitle());
-        Context context = holder.mArtwork.getContext();
-        Picasso.with(applicationContext)
-                .load(results.get(position).getImage())
-                .resize(400, 400)
-                .centerCrop()
-                .into(holder.mArtwork);
+        holder.mArtistName.setText(results.get(position).getDate());// .getTitle());
+
+//        Context context = holder.mArtwork.getContext();
+//        Picasso.with(applicationContext)
+//                .load(results.get(position)getImage())
+//                .resize(400, 400)
+//                .centerCrop()
+//                .into(holder.mArtwork);
     }
 
 

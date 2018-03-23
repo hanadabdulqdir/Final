@@ -1,8 +1,11 @@
 package anime.hanad.com.anime.network;
 
 
+import java.util.List;
+
 import anime.hanad.com.anime.AnimeList.adapter.AnimeEpisodeAdapter;
 import anime.hanad.com.anime.network.model.AnimeList;
+import anime.hanad.com.anime.network.modelDetail.Data;
 import io.reactivex.Observable;
 
 public class AppDataManager implements DataManager{
@@ -20,8 +23,7 @@ public class AppDataManager implements DataManager{
     }
 
     @Override
-    public Observable<AnimeEpisodeAdapter> getAnimeEpisodeAdapter() {
-        return iApiHelper.getAnimeEpisodeAdapter();
+    public Observable<Data> getData(String id) {
+        return iApiHelper.getData(id);
     }
-
 }

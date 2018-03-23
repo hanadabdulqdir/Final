@@ -3,8 +3,10 @@ package anime.hanad.com.anime.network.service;
 
 import anime.hanad.com.anime.AnimeList.adapter.AnimeEpisodeAdapter;
 import anime.hanad.com.anime.network.model.AnimeList;
+import anime.hanad.com.anime.network.modelDetail.Data;
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 
 public interface IRequestInterface {
 
@@ -12,9 +14,9 @@ public interface IRequestInterface {
     Observable<AnimeList> getAnimeList();
 
     @GET(ApiList.Episode_ApI)
-    Observable<AnimeEpisodeAdapter> getAnimeEpisodeAdapter();
+    Observable<Data> getData(@Path("id") int id);
 
-    //Observable<AnimeEpisodeAdapter> getAnimeEpisodeAdapter(@Path("id") int id, @Query("api_key") String apiKey);
+    //Observable<AnimeDetailAdapter> getAnimeEpisodeAdapter(@Path("id") int id, @Query("api_key") String apiKey);
 
     // @GET(ApiList.Genre_ApI)
     // Observable<AnimeGenreAdapter> getAnimeGenreAdapter();
